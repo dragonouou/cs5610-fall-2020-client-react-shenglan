@@ -1,0 +1,44 @@
+.wbdv-course-grid {
+    background-color: aliceblue;
+}
+
+.wbdv-grid {
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top:60px;
+}
+
+.wbdv-grid-header {
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.wbdv-sticky-add-course {
+    color: red;
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+}
+
+.dropdown-toggle {
+    background: none;
+    color: black;
+    border: none;
+    margin-right:50px;
+    margin-left:50px;
+}
+
+.wbdv-list-layout{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.wbdv-sticky-add-course {
+    color: red;
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+}
+
+
+

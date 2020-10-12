@@ -1,0 +1,41 @@
+.wbdv-new-course {
+    width:500px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0px;
+}
+
+.wbdv-table {
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top:60px;
+}
+
+.wbdv-grid-layout {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.wbdv-sticky-add-course {
+    color: red;
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+}
+
+.wbdv-delete {
+    width:15%
+}
+
+.wbdv-owner {
+    width:15%
+}
+
+.wbdv-modified-date {
+    width:20%
+}
+
+.wbdv-icon {
+    margin-right: 10px;
+}
+

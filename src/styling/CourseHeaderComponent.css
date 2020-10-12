@@ -1,0 +1,17 @@
+.wbdv-hamburger {
+    color: white;
+    vertical-align: middle;
+    margin-right:10px;
+    margin-left:10px;
+}
+
+.wbdv-sticky-header {
+    padding-right: 40px;
+    padding-left: 40px;
+    position:fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    padding:10px;
+    z-index:1;
+}
