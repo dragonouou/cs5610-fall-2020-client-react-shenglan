@@ -54,29 +54,3 @@ export default class CourseRowComponent extends React.Component {
         )
     }
 }
-
-
-
-// const CourseRowComponent = ({course, deleteCourse, editCourse,courseEdited}) =>
-//     <tr className="wbdv-row wbdv-course">
-//         <td className="course">
-//             <i className="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i>
-//             {
-//                 course === courseEdited &&
-//                 <input className="form-control" value={courseEdited.title}/>
-//             }
-//             {
-//                 course !== courseEdited &&
-//                 <Link to={`/edit/${course._id}`}>{course.title}</Link>
-//             }
-//         </td>
-//         <td className="wbdv-row wbdv-owner d-none d-md-table-cell">{course.owner}</td>
-//         <td className="wbdv-row wbdv-modified-date d-none d-md-table-cell">{course.modified}</td>
-//         <td className="wbdv-row wbdv-button wbdv-delete">
-//             <i className="fa fa-pencil float-right" aria-hidden="true"
-//                 onClick={() => editCourse(course)}></i>
-//             <i className="fa fa-times float-right" aria-hidden="true"
-//                onClick={() => deleteCourse(course)}></i></td>
-//     </tr>
-
-// export default CourseRowComponent
