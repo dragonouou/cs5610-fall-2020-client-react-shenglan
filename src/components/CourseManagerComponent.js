@@ -3,7 +3,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import CourseTableComponent from "./CourseTableComponent";
 import CourseEditorComponent from "./CourseEditorComponent";
 import CourseGridComponent from "./CourseGridComponent";
-import {deleteCourse, createCourse, findAllCourses} from "../services/CourseService"
+import {deleteCourse, createCourse, findAllCourses, updateCourse} from "../services/CourseService"
 import "../styling/CourseManagerComponent.css"
 
 export class CourseManagerComponent extends React.Component {
@@ -57,6 +57,18 @@ export class CourseManagerComponent extends React.Component {
         }))
     }
 
+    addEventHandler = () => {
+        const newCourseTitle = document.getElementById("newcourseFld").value
+        this.addCourse(newCourseTitle)
+        document.getElementById("newcourseFld").value = ""
+    }
+
+    updateEventHandler = (courseId, course) => {
+        updateCourse(courseId, course)
+            .then(status => {
+                this.updateCourse(courseId, course)
+    })}
+
     render(){
         return (
             <BrowserRouter>
@@ -64,14 +76,14 @@ export class CourseManagerComponent extends React.Component {
                     <Route path={["/","/table"]} exact>
                         <CourseTableComponent courses={this.state.courses}
                                               deleteCourse={this.deleteCourse}
-                                              addCourse={this.addCourse}
-                                              updateCourse={this.updateCourse}/>
+                                              addEventHandler={this.addEventHandler}
+                                              updateEventHandler={this.updateEventHandler}/>
                     </Route>
                     <Route path="/grid" exact>
                         <CourseGridComponent courses={this.state.courses}
                                               deleteCourse={this.deleteCourse}
-                                              addCourse={this.addCourse}
-                                              updateCourse={this.updateCourse}/>
+                                              addEventHandler={this.addEventHandler}
+                                              updateEventHandler={this.updateEventHandler}/>
                     </Route>
                     <Route path="/edit/:courseId" exact component={CourseEditorComponent}/>
                 </div>

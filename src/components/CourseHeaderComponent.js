@@ -1,7 +1,7 @@
 import React from "react";
 import "../styling/CourseHeaderComponent.css"
 
-const CourseHeaderComponent = (props) =>
+const CourseHeaderComponent = ({addEventHandler}) =>
     <div>
         <nav className="navbar navbar-dark bg-primary wbdv-sticky-header">
             <span>
@@ -12,11 +12,7 @@ const CourseHeaderComponent = (props) =>
                 <input className="form-control mr-sm-2 wbdv-field wbdv-new-course" type="search"
                        placeholder="New Course Title" aria-label="Search" id="newcourseFld"/>
                        <button className="btn btn-outline-light my-2 my-sm-0 wbdv-add-course"
-                                onClick={(e) => {
-                                    const newCourseTitle = document.getElementById("newcourseFld").value
-                                    props.addCourse(newCourseTitle)
-                                    document.getElementById("newcourseFld").value = ""}
-                                }>ADD</button>
+                                onClick={addEventHandler}>ADD</button>
             </span>
         </nav>
     </div>

@@ -6,19 +6,25 @@ import '../styling/CourseRowComponent.css'
 export default class CourseRowComponent extends React.Component {
 
     state = {
+        selected: false,
         editing: false,
         course:this.props.course
     }
 
     render() {
+        let className = "wbdv-row wbdv-course";
+        if(this.state.selected) {
+            className += " highlight"
+        }
+
         return (
-            <tr className="wbdv-row wbdv-course">
-                <td className="course">
+            <tr className={className} onClick={() =>
+                this.setState(prevState => ({selected: !prevState.selected}))}>
+                <td className="course" >
                     <i className="fa fa-file-text-o wbdv-row wbdv-icon" aria-hidden="true"></i>
                     {
                         this.state.editing &&
-                        <input className="form-control"
-                               onChange = {(e) =>{
+                        <input onChange = {(e) =>{
                                    const newTitle = e.target.value
                                    this.setState(prevState => ({
                                        course:{...prevState.course, title:newTitle}
@@ -30,25 +36,24 @@ export default class CourseRowComponent extends React.Component {
                         !this.state.editing &&
                         <Link to={`/edit/${this.props.course._id}`}>{this.props.course.title}</Link>
                     }
+
                 </td>
                 <td className="wbdv-row wbdv-owner d-none d-md-table-cell">{this.props.course.owner}</td>
-                <td className="wbdv-row wbdv-modified-date d-none d-md-table-cell">{this.props.course.modified}</td>
+                <td className="wbdv-row wbdv-modified-date d-none d-lg-table-cell">{this.props.course.modified}</td>
                 <td className="wbdv-row wbdv-button wbdv-delete">
                     {
                         this.state.editing &&
-                        <button onClick={()=>
-                            updateCourse(this.state.course._id, this.state.course)
-                                .then(status => {
-                                    this.setState({editing: false})
-                                    this.props.updateCourse(this.state.course._id, this.state.course)
-                                })}>Ok</button>
+                        <i className="fa fa-check-square-o float-right" aria-hidden="true" onClick={()=> {
+                            this.props.updateEventHandler(this.state.course._id,this.state.course)
+                            this.setState({editing: false})
+                        }}></i>
                     }
                     {
                         !this.state.editing &&
                         <i className="fa fa-pencil float-right" aria-hidden="true"
                            onClick={() => this.setState({editing: true})}></i>
                     }
-                    <i className="fa fa-times float-right wbdv-cross" aria-hidden="true"
+                    <i className="fa fa-trash float-right wbdv-cross" aria-hidden="true"
                        onClick={() => this.props.deleteCourse(this.props.course)}></i></td>
             </tr>
         )

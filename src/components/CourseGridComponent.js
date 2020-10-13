@@ -14,7 +14,7 @@ export default class CourseGridComponent extends React.Component {
     render(){
         return (
             <div className="wbdv-course-grid">
-                <CourseHeaderComponent addCourse={this.props.addCourse}/>
+                <CourseHeaderComponent addEventHandler={this.props.addEventHandler}/>
 
                 <div className="wbdv-grid">
                     <div className="wbdv-grid-header">
@@ -41,7 +41,7 @@ export default class CourseGridComponent extends React.Component {
                         {this.props.courses.map(course =>
                             <CourseCardComponent
                                 deleteCourse={this.props.deleteCourse}
-                                updateCourse={this.props.updateCourse}
+                                updateEventHandler={this.props.updateEventHandler}
                                 course = {course}/>
                         )
                         }
@@ -49,11 +49,7 @@ export default class CourseGridComponent extends React.Component {
                     </div>
                 </div>
                 <i className="fa fa-plus-circle fa-3x float-right wbdv-button wbdv-sticky-add-course"
-                   aria-hidden="true" onClick={() => {
-                        const newCourseTitle = document.getElementById("newcourseFld").value
-                        this.props.addCourse(newCourseTitle)
-                        document.getElementById("newcourseFld").value = ""
-                }}></i>
+                   aria-hidden="true" onClick={this.props.addEventHandler}></i>
             </div>
         )
     }
