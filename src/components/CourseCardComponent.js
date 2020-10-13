@@ -4,7 +4,6 @@ import "../styling/CourseCardComponent.css"
 import sample from "./sample.png"
 import "../styling/CourseCardComponent.css"
 import {Link} from "react-router-dom";
-import {updateCourse} from "../services/CourseService";
 
 export default class CourseCardComponent extends React.Component{
     state ={

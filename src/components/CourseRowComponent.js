@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom"
-import {updateCourse} from "../services/CourseService";
 import '../styling/CourseRowComponent.css'
 
 export default class CourseRowComponent extends React.Component {
