@@ -34,3 +34,6 @@ export const updateCourse = (courseId,newCourse) =>
     })
         .then(response => response.json())
 
+export default {
+    findAllCourses, findCourseById, createCourse, deleteCourse, updateCourse
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import {BrowserRouter, Route} from "react-router-dom";
 import CourseTableComponent from "./CourseTableComponent";
-import CourseEditorComponent from "./CourseEditorComponent";
 import CourseGridComponent from "./CourseGridComponent";
 import {deleteCourse, createCourse, findAllCourses, updateCourse} from "../services/CourseService"
 import "../styling/CourseManagerComponent.css"
+import CourseEditorContainer from "../containers/CourseEditorContainer";
 
 export class CourseManagerComponent extends React.Component {
     state = {
@@ -85,7 +85,10 @@ export class CourseManagerComponent extends React.Component {
                                               addEventHandler={this.addEventHandler}
                                               updateEventHandler={this.updateEventHandler}/>
                     </Route>
-                    <Route path="/edit/:courseId" exact component={CourseEditorComponent}/>
+                    <Route path={["/edit/course/:courseId","/edit/course/:courseId/modules/:moduleId",
+                        "/edit/course/:courseId/modules/:moduleId/lessons/:lessonId"]}
+                           exact
+                           component={CourseEditorContainer}/>
                 </div>
             </BrowserRouter>
         )

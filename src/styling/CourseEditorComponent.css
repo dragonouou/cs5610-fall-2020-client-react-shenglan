@@ -86,4 +86,27 @@
     background-color: white;
 }
 
+.highlight-module-topic {
+    background-color: #007bff;
+    color:white;
+}
+.highlight-text-white {
+    color: white;
+}
 
+.highlight-lesson {
+    background-color: lightgrey;
+    color:black;
+}
+
+.highlight-text-black {
+    color: black;
+}
+
+.wbdv-trash {
+    margin-right:10px
+}
+
+.wbdv-lesson {
+    width:100px
+}

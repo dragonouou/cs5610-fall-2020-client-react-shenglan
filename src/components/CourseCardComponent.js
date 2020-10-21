@@ -30,7 +30,7 @@ export default class CourseCardComponent extends React.Component{
                             }
                             {
                                 !this.state.editing &&
-                                <Link to={`/edit/${this.props.course._id}`}>{this.props.course.title}</Link>
+                                <Link to={`/edit/course/${this.props.course._id}`}>{this.props.course.title}</Link>
                             }
                             {
                                 this.state.editing &&

@@ -33,7 +33,7 @@ export default class CourseRowComponent extends React.Component {
                     }
                     {
                         !this.state.editing &&
-                        <Link to={`/edit/${this.props.course._id}`}>{this.props.course.title}</Link>
+                        <Link to={`/edit/course/${this.props.course._id}`}>{this.props.course.title}</Link>
                     }
 
                 </td>

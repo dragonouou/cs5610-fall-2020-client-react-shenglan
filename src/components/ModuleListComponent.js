@@ -1,61 +1,53 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-export class ModuleListComponent extends React.Component {
-    render(){
-        return (
-            <div className="col-4 left-panel">
-                <ul className="list-group wbdv-module-list">
-                    <li className="list-group-item wbdv-module-item">
-                        <span className="wbdv-module-item-title">Modules 1 - JQuery</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
+const ModuleListComponent = ({
+    course={},modules=[],deleteModule,createModule,updateModule,editModule,changeModule,selectModule
+}) =>
+    <div>
+        <ul className="list-group wbdv-module-list">
+            {modules.map(module => {
+
+                let classNameForList = "list-group-item wbdv-module-item"
+                let classNameForLink = ""
+                if(module.selected) {
+                    classNameForList += " highlight-module-topic"
+                    classNameForLink += " highlight-text-white"
+                }
+
+                return (
+                    <li className={classNameForList} key={module._id}>
+                        {
+                            module.editing &&
+                            <span>
+                            <input onChange={(e) => (changeModule({
+                                ...module, title: e.target.value}))}
+                                   value={module.title}/>
+                            <i className="fa fa-check-square-o float-right" aria-hidden="true"
+                               onClick={()=>updateModule(module)}></i>
+                            <i className="fa fa-trash float-right wbdv-trash" aria-hidden="true"
+                               onClick={()=>deleteModule(module)}></i>
+                            </span>
+                        }
+                        {
+                            !module.editing &&
+                            <span>
+                            <Link onClick={()=>selectModule({
+                                ...module, selected:!module.selected
+                            })} className={classNameForLink}
+                                  to={`/edit/course/${course._id}/modules/${module._id}`}>{module.title}</Link>
+                            <i className="fa fa-pencil float-right" aria-hidden="true"
+                               onClick={()=>editModule(module)}></i></span>
+                        }
                     </li>
-                    <li className="list-group-item wbdv-module-item active">
-                        <span className="wbdv-module-item-title">Modules 2 - React</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
-                    </li>
-                    <li className="list-group-item wbdv-module-item">
-                        <span className="wbdv-module-item-title">Modules 3 - Redux</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
-                    </li>
-                    <li className="list-group-item wbdv-module-item">
-                        <span className="wbdv-module-item-title">Modules 4 - Native</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
-                    </li>
-                    <li className="list-group-item wbdv-module-item">
-                        <span className="wbdv-module-item-title">Modules 5 - Angular</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
-                    </li>
-                    <li className="list-group-item wbdv-module-item">
-                        <span className="wbdv-module-item-title">Modules 6 - Node</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
-                    </li>
-                    <li className="list-group-item wbdv-module-item">
-                        <span className="wbdv-module-item-title">Modules 7 - Mongo</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
-                    </li>
-                    <li className="list-group-item wbdv-module-item">
-                        <span className="wbdv-module-item-title">Modules 8 - MySQL</span>
-                        <span className="wbdv-module-item-delete-btn">
-                        <i className="fa fa-times float-right" aria-hidden="true"></i>
-                    </span>
-                    </li>
-                </ul>
-                <i className="fa fa-2x fa-plus float-right wbdv-module-item-add-btn" aria-hidden="true"></i>
-            </div>
-        )
-    }
-}
+                )
+            }
+
+            )}
+        </ul>
+        <i className="fa fa-2x fa-plus float-right wbdv-module-item-add-btn" aria-hidden="true"
+           onClick={()=> createModule(course)}></i>
+    </div>
+
+export default ModuleListComponent
+

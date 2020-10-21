@@ -5,9 +5,25 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import 'font-awesome/css/font-awesome.min.css'
 import * as serviceWorker from './serviceWorker';
 import {CourseManagerComponent} from "./components/CourseManagerComponent";
+import {combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
+import widgetReducer from "./reducers/widgetReducer";
+import moduleReducer from "./reducers/moduleReducer";
+import courseReducer from "./reducers/courseReducer";
+import {lessonReducer} from "./reducers/lessonReducer";
+import {topicReducer} from "./reducers/topicReducer"
+
+const reducers = combineReducers({
+    widgetReducer, moduleReducer, courseReducer, lessonReducer, topicReducer
+})
+
+const store = createStore(reducers)
 
 ReactDOM.render(
-    <CourseManagerComponent/>,
+    <Provider store = {store}>
+        {/*<WidgetListContainer/>*/}
+        <CourseManagerComponent/>
+    </Provider>,
   document.getElementById('root')
 );
 
