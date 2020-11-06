@@ -24,8 +24,19 @@ export const findTopicForLesson = (dispatch, topics, lessonId) =>
         lessonId:lessonId
     })
 
+export const findWidgetsForTopic = (dispatch, widgets, topicId) =>
+    dispatch ({
+        type:"FIND_WIDGETS_FOR_TOPIC",
+        widgets,
+        topicId
+    })
+
 export const clearTopics = (dispatch) =>
     dispatch ({
         type:"CLEAR_TOPICS",
     })
 
+export const clearWidgets = (dispatch) =>
+    dispatch ({
+        type:"CLEAR_WIDGETS",
+    })

@@ -5,8 +5,11 @@ import {connect} from "react-redux";
 import TopicPillsComponent from "../components/TopicPillsComponent";
 
 const stateToPropertyMapper = (state) => ({
-    topics:state.topicReducer.topics,
+    course:state.courseReducer.course,
+    moduleId:state.lessonReducer.moduleId,
     lessonId:state.topicReducer.lessonId,
+    topics:state.topicReducer.topics
+
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

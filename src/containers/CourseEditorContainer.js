@@ -2,10 +2,11 @@ import courseService from "../services/CourseService";
 import moduleService from "../services/ModuleService";
 import lessonService from "../services/LessonService";
 import topicService from "../services/TopicService";
+import widgetService from "../services/WidgetService"
 import {connect} from "react-redux";
 import {CourseEditorComponent} from "../components/CourseEditorComponent";
 import {findModulesForCourse, findTopicForLesson, findLessonForModule,
-    findCourseById,clearTopics} from "../actions/courseEditorActions";
+    findCourseById,clearTopics,clearWidgets,findWidgetsForTopic} from "../actions/courseEditorActions";
 
 const stateToPropertyMapper = (state) => ({
     course: state.courseReducer.course,
@@ -33,7 +34,17 @@ const propertyToDispatchMapper = (dispatch) => ({
             .then(topics =>
                 findTopicForLesson(dispatch, topics, lessonId)),
 
-    clearTopics:() => clearTopics(dispatch)
+    clearTopics:() => clearTopics(dispatch),
+
+    clearWidgets:() => clearWidgets(dispatch),
+
+    findWidgetsForTopic: (topicId) =>
+        widgetService.findWidgetsForTopic(topicId)
+            .then(widgets =>
+                findWidgetsForTopic(dispatch, widgets, topicId)
+            ),
+
+
 })
 
 export default connect

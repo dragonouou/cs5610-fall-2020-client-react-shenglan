@@ -1,47 +1,38 @@
 import {DELETE_WIDGET,CREATE_WIDGET,UPDATE_WIDGET} from "../actions/widgetActions";
 
 const initialState = {
-    widgets: [
-            {
-                _id:"123",
-                name:"Widget 1",
-                editing:false
-            },
-            {
-                _id:"234",
-                name:"Widget 2",
-                editing:false
-            },
-            {
-                _id:"345",
-                name:"Widget 3",
-                editing:false
-            },
-            {
-                _id:"456",
-                name:"Widget 4",
-                editing:false
-            },
-    ]
+    widgets: [],
+    topicId:[],
 }
 
 const widgetReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "FIND_WIDGETS_FOR_TOPIC":
+            return {
+                ...state,
+                widgets: action.widgets,
+                topicId: action.topicId
+            }
         case CREATE_WIDGET:
             return {
-                widgets: [...state.widgets, {
-                    _id: Date.now() + "",
-                    name:"new Widget"
-                }
+                ...state,
+                widgets: [...state.widgets, action.newWidget
             ]}
         case UPDATE_WIDGET:
             return {
+                ...state,
                 widgets: state.widgets.map(widget =>
-                    widget._id === action.widget._id ? action.widget : widget)
+                    widget.id === action.widget.id ? action.widget : widget),
             }
         case DELETE_WIDGET:
             return {
+                ...state,
                 widgets:state.widgets.filter(widget => widget !== action.widget)
+            }
+        case "CLEAR_WIDGETS":
+            return {
+                ...state,
+                widgets:[]
             }
         default:
             return state;

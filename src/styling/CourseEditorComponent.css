@@ -54,15 +54,12 @@
 
 .save-preview {
     margin-right: 40px;
+    height:50px;
 }
 
-.widget {
-    margin-left: 13px;
-    margin-top: 50px;
+.widgets {
     margin-right: 40px;
-    border:1px solid gray;
     padding-left:10px;
-    padding-right:10px;
     padding-top:5px;
     padding-bottom:5px;
 }
@@ -110,3 +107,4 @@
 .wbdv-lesson {
     width:100px
 }
+

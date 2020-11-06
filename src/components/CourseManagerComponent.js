@@ -85,8 +85,10 @@ export class CourseManagerComponent extends React.Component {
                                               addEventHandler={this.addEventHandler}
                                               updateEventHandler={this.updateEventHandler}/>
                     </Route>
-                    <Route path={["/edit/course/:courseId","/edit/course/:courseId/modules/:moduleId",
-                        "/edit/course/:courseId/modules/:moduleId/lessons/:lessonId"]}
+                    <Route path={["/edit/course/:courseId",
+                        "/edit/course/:courseId/modules/:moduleId",
+                        "/edit/course/:courseId/modules/:moduleId/lessons/:lessonId",
+                        "/edit/course/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
                            exact
                            component={CourseEditorContainer}/>
                 </div>
