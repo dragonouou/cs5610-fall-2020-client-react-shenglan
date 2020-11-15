@@ -1,7 +1,7 @@
-// const widgetUrl = "http://localhost:8080/api/widgets"
-// const topicUrl = "http://localhost:8080/api/topics"
-const widgetUrl = "https://warm-atoll-00004.herokuapp.com/api/widgets"
-const topicUrl = "https://warm-atoll-00004.herokuapp.com/api/topics"
+const widgetUrl = "http://localhost:8080/api/widgets"
+const topicUrl = "http://localhost:8080/api/topics"
+// const widgetUrl = "https://warm-atoll-00004.herokuapp.com/api/widgets"
+// const topicUrl = "https://warm-atoll-00004.herokuapp.com/api/topics"
 
 const findAllWidgets = () =>
     fetch(widgetUrl)
@@ -32,7 +32,7 @@ const updateWidget = (widgetId, newWidget) =>
 const deleteWidget = (widgetId) =>
     fetch(`${widgetUrl}/${widgetId}`,{
         method:"DELETE"
-    }).then(response => response.json())
+    })
 
 
 export default {findAllWidgets,createWidget,findWidgetsForTopic,updateWidget,deleteWidget}

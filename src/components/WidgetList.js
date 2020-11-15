@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/ParagraphWidget";
 import "../styling/WidgetListComponent.css"
+import ListWidget from "./widgets/ListWidget";
+import ImageWidget from "./widgets/ImageWidget";
 
 const WidgetList = ({widgets=[], topicId, deleteWidget, createWidget, updateWidget, changeWidget}) => {
 
@@ -32,7 +34,6 @@ const WidgetList = ({widgets=[], topicId, deleteWidget, createWidget, updateWidg
     var maxOrder = -1
 
     if (orderedWidgetList.length !== 0) {
-        debugger
         minOrder = orderedWidgetList[0].widgetOrder
         maxOrder = orderedWidgetList[orderedWidgetList.length - 1].widgetOrder
     }
@@ -54,6 +55,18 @@ const WidgetList = ({widgets=[], topicId, deleteWidget, createWidget, updateWidg
                                 <ParagraphWidget widget={widget} updateWidget={updateWidget} deleteWidget={deleteWidget}
                                                  changeWidget={changeWidget} moveUpWidget={moveUpWidget}
                                                  moveDownWidget={moveDownWidget} minOrder={minOrder} maxOrder={maxOrder}/>
+                            }
+                            {
+                                widget.type === "List" &&
+                                <ListWidget widget={widget} updateWidget={updateWidget} deleteWidget={deleteWidget}
+                                                 changeWidget={changeWidget} moveUpWidget={moveUpWidget}
+                                                 moveDownWidget={moveDownWidget} minOrder={minOrder} maxOrder={maxOrder}/>
+                            }
+                            {
+                                widget.type === "Image" &&
+                                <ImageWidget widget={widget} updateWidget={updateWidget} deleteWidget={deleteWidget}
+                                            changeWidget={changeWidget} moveUpWidget={moveUpWidget}
+                                            moveDownWidget={moveDownWidget} minOrder={minOrder} maxOrder={maxOrder}/>
                             }
                         </li>
                     )
